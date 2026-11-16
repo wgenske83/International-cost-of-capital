@@ -150,6 +150,7 @@ with st.sidebar:
     st.subheader('Manual data overrides')
     st.caption('Switch on to replace a downloaded value. Blank source values require an override.')
     def override(label,auto,default,min_value=0.,max_value=100.):
+        min_value, max_value = float(min_value), float(max_value)
         enabled=st.toggle('Override '+label,value=auto is None,key='toggle_'+label)
         if enabled:
             val=st.number_input(label,min_value=min_value,max_value=max_value,value=float(auto if auto is not None else default),step=0.1,key='num_'+label)
